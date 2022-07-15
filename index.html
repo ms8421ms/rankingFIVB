@@ -178,6 +178,14 @@
 
         let text1 = "Il nuovo ranking della squadra 1 è ";
         let text2 = "Il nuovo ranking della squadra 2 è ";
+	    
+	if (NP1 < 0){
+		NP1 = 0;
+	}
+	
+	if (NP2 < 0){
+		NP2 = 0;
+	}
 
         document.getElementById("demo1").innerHTML = text1 + NP1;
         document.getElementById("demo2").innerHTML = text2 + NP2;
