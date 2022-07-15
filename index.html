@@ -186,6 +186,9 @@
 	if (NP2 < 0){
 		NP2 = 0;
 	}
+	    
+	NP1 = Math.round(NP1*100.0)/100.0;
+	NP2 = Math.round(NP2*100.0)/100.0;
 
         document.getElementById("demo1").innerHTML = text1 + NP1;
         document.getElementById("demo2").innerHTML = text2 + NP2;
