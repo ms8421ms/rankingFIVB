@@ -1,16 +1,28 @@
-<html>
-  <head>
-    <title>Calcolo ranking FIVB</title>
-  </head>
+<style>
+#solounaprova {
+  border: 1px solid black;
+  padding: 25px;
+}
 
+#areastampa{
+  border: 1px solid black;
+  padding: 25px;
+  background-color:powderblue;
+}
+
+</style>
+
+<html>
+<div id="solounaprova">
 <body>
-	<h1>Calcolo ranking FIVB</h1>
+    <h1>Calcolo ranking FIVB</h1>
+  <h4>di Fratellanza Olimpica</h4>
 <form method="GET">
-    <label for="rankingS1">Ranking squadra A</label>
-    <input id="rankingS1" name="rankingS1" type="number" placeholder="Inserisci ranking squadra 1">
+    <label for="rankingS1">Ranking squadra 1</label>
+    <input size="30" id="rankingS1" name="rankingS1" type="number">
     <br>
-    <label for="rankingS2">Ranking squadra B</label>
-    <input id="rankingS2" name="rankingS2" type="number" placeholder="Inserisci ranking squadra 2">
+    <label for="rankingS2">Ranking squadra 2</label>
+    <input size="30" id="rankingS2" name="rankingS2" type="number">
     <br>
     <label for="risultato">Risultato</label>
     <select id="risultato" name="risultato">
@@ -33,16 +45,22 @@
         <option value="8">Qualificazione tornei continentali</option>
         <option value="9">Altri</option>
     </select> 
-    <button type="button" onclick="calcolo()">Calcola i nuovi ranking</button>
+    <button style="margin-top:12px; margin-bottom:12px" type="button" onclick="calcolo()">Calcola i nuovi ranking</button>
 
-    <p style="background-color:powderblue;" id="demo1"></p>
-    <p style="background-color:powderblue;" id="demo2"></p>
+    <div id="areastampa">
+    <p style="margin-bottom:0;" id="demo1">Inserisci i due valori del ranking iniziali per iniziare</p>
+    <p style="margin:0; padding-top:0;" id="demo2"></p>
+    </div>
 
 <script>
     function calcolo(){
 
         var selezioners1 = document.getElementById("rankingS1").value;
         var selezioners2 = document.getElementById("rankingS2").value;
+        if (selezioners1 == "" || selezioners2 == ""){
+            document.getElementById("demo1").innerHTML = "ERRORE:";
+            document.getElementById("demo2").innerHTML = "Inserisci i due valori del ranking iniziali!";
+        } else {
         var selezionerisultato = document.getElementById("risultato");
         var testorisultato = selezionerisultato.options[selezionerisultato.selectedIndex].text;
         var selezionecompetizione = document.getElementById("competizione");
@@ -178,20 +196,18 @@
 
         let text1 = "Il nuovo ranking della squadra 1 è ";
         let text2 = "Il nuovo ranking della squadra 2 è ";
-	    
-	if (NP1 < 0){
-		NP1 = 0;
-	}
-	
-	if (NP2 < 0){
-		NP2 = 0;
-	}
-	    
-	NP1 = Math.round(NP1*100.0)/100.0;
-	NP2 = Math.round(NP2*100.0)/100.0;
+          
+        if (NP1 < 0){
+          NP1 = 0;
+        }
+
+        if (NP2 < 0){
+          NP2 = 0;
+        }
 
         document.getElementById("demo1").innerHTML = text1 + NP1.toFixed(2);
         document.getElementById("demo2").innerHTML = text2 + NP2.toFixed(2);
+        }
 
     }
 </script>
